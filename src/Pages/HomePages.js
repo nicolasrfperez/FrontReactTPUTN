@@ -1,6 +1,6 @@
 import React,{Component} from "react"
-import Producto from "../Components/Producto"
-class Home extends Component{
+import ProductoComponents from "../Components/ProductoComponents"
+class HomePages extends Component{
     constructor(){
         super()
         this.state={
@@ -30,10 +30,10 @@ class Home extends Component{
     render(){
         return(
             <div>
-                {this.state.productos.map(producto=><Producto producto={producto} />)}
+                {this.state.productos.map(producto=><ProductoComponents producto={producto} />)}
                 <button onClick={this.handleClick}>Filtrar productos</button>
             </div>
         )
     }
 }
-export default Home
+export default HomePages
