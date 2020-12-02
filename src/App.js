@@ -1,5 +1,4 @@
 import React,{Component} from "react";
-import logo from './logo.svg';
 import './App.css';
 
 import MenuComponents from './Components/MenuComponents/index'
@@ -55,12 +54,13 @@ class App extends Component{
       <>
         
       <BrowserRouter>
+      
         <MenuComponents options={this.state.opciones} click={this.handleClickLogin} />
         {
-          this.state.usuario.rol=="admin" && <RoutesAdminComponents />
+          this.state.usuario.rol==="admin" && <RoutesAdminComponents />
         }
         {
-          this.state.usuario.rol!="admin" && <RoutesWebComponents />
+          this.state.usuario.rol!=="admin" && <RoutesWebComponents />
         }
         
       </BrowserRouter>

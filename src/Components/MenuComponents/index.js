@@ -12,7 +12,7 @@ class MenuComponents extends Component{
     return (
       
         <div style={styles.div}>
-            {this.props.options.map(option=><OptionComponents option={option} />)}
+            {this.props.options.map(option=><OptionComponents key={option.label} option={option} />)}
             <button onClick={this.props.click}>Login</button>
         </div>
         

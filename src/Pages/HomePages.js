@@ -1,39 +1,33 @@
-import React,{Component} from "react"
+import React,{useState,useEffect} from "react"
 import ProductoComponents from "../Components/ProductoComponents"
-class HomePages extends Component{
-    constructor(){
-        super()
-        this.state={
-            productos:[
-                {
-                    id:1,
-                    name:"moto g"
-                },
-               {
-                   id:2,
-                   name:"moto x"
-               } 
-            ]
+import {getProductos} from "../Services/ProductosServices";
+function HomePages(){
+    
+    const [productos,setProductos] = useState([]);
+    const [loading,setLoading] = useState(true);
+    useEffect(
+        () => {
+            async function fetchData() {
+                const data = await getProductos()
+                setProductos(data.docs);
+                setLoading(false);
+            }
+            fetchData();
+        }, []);  
+     
+    return(
+        <>
+        {
+            loading && <div>Loading ...</div>
         }
-    }
-    handleClick = ()=>{
-        this.setState({
-            productos:[
-                
-               {
-                   id:2,
-                   name:"moto x"
-               } 
-            ]
-        })
-    }
-    render(){
-        return(
+        {
+            !loading && 
             <div>
-                {this.state.productos.map(producto=><ProductoComponents producto={producto} />)}
-                <button onClick={this.handleClick}>Filtrar productos</button>
+                {productos.map(producto=><ProductoComponents key={producto.id} producto={producto} verDetalle={true} />)}
             </div>
-        )
-    }
+        }
+        
+        </>
+    )    
 }
 export default HomePages

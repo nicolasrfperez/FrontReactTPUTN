@@ -7,7 +7,11 @@ class ProductoComponents extends Component{
             <div>
                 {this.props.producto.id}
                 {this.props.producto.name}
-                <Link to={"/productos/"+this.props.producto.id}><button>Ver Detalle</button></Link>
+                {
+                    this.props.verDetalle &&
+                    <Link to={"/productos/"+this.props.producto.id}><button>Ver Detalle</button></Link>
+                }
+                
             </div>
         )
     }
