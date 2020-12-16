@@ -27,22 +27,22 @@ function HomePages(){
     return(
         <>
         <Container>
-        <FormGroup label="Buscar" type="text" placeholder="Buscar" name="buscar" value={buscar} change={handleChange}/>
-        {
-            loading && 
-            <div style={{position:"fixed",top:"50%",left:"50%"}}>
-                    <Spinner  animation="grow" />
-                    <Spinner  animation="grow" />
-                    <Spinner  animation="grow" />
-            </div>
-        }
-        {
-            !loading && 
-            <>
+            <FormGroup label="Buscar" type="text" placeholder="Buscar" name="buscar" value={buscar} change={handleChange}/>
+            {
+                loading && 
+                <div style={{position:"fixed",top:"50%",left:"50%"}}>
+                        <Spinner  animation="grow" />
+                        <Spinner  animation="grow" />
+                        <Spinner  animation="grow" />
+                </div>
+            }
+            {
+                !loading && 
+                <>
                 
-                {productos.map(producto=><ProductoComponents key={producto.id} producto={producto} verDetalle={true} />)}
-            </>
-        }
+                    {productos.map(producto=><ProductoComponents key={producto.id} producto={producto} verDetalle={true} />)}
+                </>
+            }
         </Container>
         </>
     )    

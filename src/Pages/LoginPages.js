@@ -1,5 +1,6 @@
 import React,{useState} from "react"
-import {Form,Button,Container} from 'react-bootstrap'
+import {Form,Container} from 'react-bootstrap'
+import { useHistory } from "react-router-dom";
 import FormGroup from "../Components/Forms/FormGroup"
 import ButtonWithLoading from "../Components/Forms/ButtonWithLoading"
 import {login} from "../Services/UsuariosServices"
@@ -8,6 +9,7 @@ function LoginPages(){
     const [form,setForm] = useState({email:'',password:''});
     const [loading,setLoading] = useState(false);
     const [alert,setAlert] = useState({variant:"",text:""})
+    const history = useHistory();
     const handleChange = (e)=>{
         setForm({
             ...form,
@@ -23,6 +25,7 @@ function LoginPages(){
             if(data.data.token){
                 localStorage.setItem("token",data.data.token)
                 setAlert({variant:"success",text:"Bienvenido/a"})
+                history.push("/")
             }else{
                 setAlert({variant:"danger",text:"Ha ocurrido un error"})
             }
