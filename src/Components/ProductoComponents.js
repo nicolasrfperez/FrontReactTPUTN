@@ -1,19 +1,25 @@
-import React,{Component} from "react"
+import React from "react"
 import {Link} from 'react-router-dom'
-class ProductoComponents extends Component{
+import { Card,Button } from 'react-bootstrap';
+function ProductoComponents({producto,verDetalle}) {
     
-    render(){
-        return(
-            <div>
-                {this.props.producto.id}
-                {this.props.producto.name}
+    
+    return(
+        <Card style={{ width: '18rem',marginTop:"10px" }}>
+            <Card.Img variant="top" src={producto.image_path} />
+            <Card.Body>
+                <Card.Title>{producto.name}</Card.Title>
+                <Card.Text>
+                {producto.price_currency}
+                </Card.Text>
                 {
-                    this.props.verDetalle &&
-                    <Link to={"/productos/"+this.props.producto.id}><button>Ver Detalle</button></Link>
+                    verDetalle &&
+                    <Link to={"/productos/"+producto.id}><Button variant="primary">Ver Detalle</Button></Link>
                 }
                 
-            </div>
-        )
-    }
+            </Card.Body>
+        </Card>
+    )
+    
 }
 export default ProductoComponents

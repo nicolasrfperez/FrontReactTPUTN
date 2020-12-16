@@ -7,9 +7,9 @@ function ProductoDetallePages(props){
     useEffect(
         () => {
             async function fetchData() {
-                const data = await getProducto(props.match.params.id)
-                console.log(data);
-                setProducto(data);
+                const response = await getProducto(props.match.params.id)
+                console.log(response);
+                setProducto(response.data);
                 setLoading(false);
             }
             fetchData();

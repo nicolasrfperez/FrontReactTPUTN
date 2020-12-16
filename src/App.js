@@ -11,7 +11,10 @@ class App extends Component{
     //Define el state
     this.state={
       opciones:[
-        
+        {
+          path:"/",
+          label:"Home"
+        },
         {
           path:"/login",
           label:"Login"
