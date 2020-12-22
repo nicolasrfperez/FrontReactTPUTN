@@ -1,9 +1,19 @@
 import React from "react"
 import {Link} from 'react-router-dom'
 import { Card,Button } from 'react-bootstrap';
+import {Venta} from '../Services/VentasServices'
 function ProductoComponents({producto,verDetalle}) {
     
-    
+    const handleClick = async (e)=>{
+        e.preventDefault();
+        let result = await Venta({
+            "products":[producto._id]
+        })
+        console.log(result)
+        if(result["data"]["mp"]){
+            window.open(result["data"]["mp"]["body"]["init_point"],'_blank');
+        }
+    }
     return(
         <Card style={{ width: '18rem',marginTop:"10px" }}>
             <Card.Img variant="top" src={producto.image_path} />
@@ -16,7 +26,7 @@ function ProductoComponents({producto,verDetalle}) {
                     verDetalle &&
                     <Link to={"/productos/"+producto.id}><Button variant="primary">Ver Detalle</Button></Link>
                 }
-                
+                <Button variant="primary" onClick={handleClick}>Comprar</Button>
             </Card.Body>
         </Card>
     )
