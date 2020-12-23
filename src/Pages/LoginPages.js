@@ -1,11 +1,14 @@
-import React,{useState} from "react"
+import React,{useContext, useState} from "react"
 import {Form,Container} from 'react-bootstrap'
 import { useHistory } from "react-router-dom";
 import FormGroup from "../Components/Forms/FormGroup"
 import ButtonWithLoading from "../Components/Forms/ButtonWithLoading"
 import {login} from "../Services/UsuariosServices"
 import AlertCustom from "../Components/AlertCustom"
+import NetContext from "../Context/NetContext"
+
 function LoginPages(){
+    const context = useContext(NetContext);
     const [form,setForm] = useState({email:'',password:''});
     const [loading,setLoading] = useState(false);
     const [alert,setAlert] = useState({variant:"",text:""})
@@ -23,7 +26,7 @@ function LoginPages(){
         .then(data=>{
             console.log("Data",data)
             if(data.data.token){
-                localStorage.setItem("token",data.data.token)
+                context.loginUser(data.data.token)
                 setAlert({variant:"success",text:"Bienvenido/a"})
                 history.push("/")
             }else{

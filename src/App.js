@@ -5,6 +5,8 @@ import MenuComponents from './Components/MenuComponents/index'
 import {BrowserRouter} from "react-router-dom"
 import RoutesAdminComponents from "./Components/RoutesComponents/RoutesAdminComponents";
 import RoutesWebComponents from "./Components/RoutesComponents/RoutesWebComponents";
+
+import GlobalState from "./Context/GlobalState";
 class App extends Component{
   constructor(){
     super()
@@ -55,18 +57,19 @@ class App extends Component{
 
     return (
       <>
+      <GlobalState>  
+        <BrowserRouter>
         
-      <BrowserRouter>
-      
-        <MenuComponents options={this.state.opciones} click={this.handleClickLogin} />
-        {
-          this.state.usuario.rol==="admin" && <RoutesAdminComponents />
-        }
-        {
-          this.state.usuario.rol!=="admin" && <RoutesWebComponents />
-        }
-        
-      </BrowserRouter>
+          <MenuComponents options={this.state.opciones} click={this.handleClickLogin} />
+          {
+            this.state.usuario.rol==="admin" && <RoutesAdminComponents />
+          }
+          {
+            this.state.usuario.rol!=="admin" && <RoutesWebComponents />
+          }
+          
+        </BrowserRouter>
+      </GlobalState>
 
       </>
 
