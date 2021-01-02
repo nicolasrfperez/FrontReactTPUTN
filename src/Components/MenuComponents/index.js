@@ -11,7 +11,7 @@ class MenuComponents extends Component{
           context=>(
             
             <Navbar bg="light" expand="lg" style={{marginBottom:'10px'}}>
-              <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+              <Navbar.Brand href="#home">TP FINAL UTN</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="mr-auto">

@@ -7,13 +7,13 @@ function ProductoDetallePages(props){
     useEffect(
         () => {
             async function fetchData() {
-                const response = await getProducto(props.match.params.id)
+                const response = await getProducto(props)
                 console.log(response);
                 setProducto(response.data);
                 setLoading(false);
             }
             fetchData();
-        }, []);  
+        },);  
     return(
         <>
         {

@@ -1,4 +1,4 @@
-import React,{ useState} from "react";
+//import React,{Component} from "react";
 import './App.css';
 
 import MenuComponents from './Components/MenuComponents/index'
@@ -9,10 +9,11 @@ import RoutesWebComponents from "./Components/RoutesComponents/RoutesWebComponen
 import GlobalState from "./Context/GlobalState";
 
 
- function App (props) {
+function App(){
+
     //Define el state
-   const [option,setPages] =  useState({
-      option:[
+    this.state={
+      opciones:[
         {
           path:"/",
           label:"Home"
@@ -26,53 +27,41 @@ import GlobalState from "./Context/GlobalState";
           label:"Registro"
         }
       ],
-    /*
-    const [user, setUser] = useState({
       usuario:{
         name:"Nico",
         rol:"web"
       }
-    */
-      user:{
-        name:"Nico",
-        rol:"web",
-      }
-   });
+    };
   
   
- const handleClickLogin = (props)=>{
+ function handleClickLogin (){
     //Modifica el valor de state
-    setPages({
-      option:[{
+    this.props.setState({
+      opciones:[{
         path:"/",
-        label:"Home"
+        label:"Home" 
       },
       {
         path:"/login",
         label:"Login"
       }],
-       user:{
-        name:"Nico",
-        rol:"web"
-      }
-      
     })
+  }
   
- }
 
-  
+
 
     return (
       <>
       <GlobalState>  
         <BrowserRouter>
-
-          <MenuComponents useState={option} onClick={handleClickLogin} />
+        
+          <MenuComponents options={this.state.opciones} click={handleClickLogin} />
           {
-            option.user.rol==="admin" && <RoutesAdminComponents />
+            this.state.usuario.rol==="admin" && <RoutesAdminComponents />
           }
           {
-            option.user.rol==="web" && <RoutesWebComponents />
+            this.state.usuario.rol==="web" && <RoutesWebComponents />
           }
           
         </BrowserRouter>
@@ -81,8 +70,9 @@ import GlobalState from "./Context/GlobalState";
       </>
 
       
-    )
+    );
   }
   
+
 
 export default App;
