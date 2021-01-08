@@ -1,10 +1,10 @@
-//import React,{Component} from "react";
+import React,{Component} from "react";
 import OptionComponents from "./OptionComponents"
 import { Navbar,  Nav} from 'react-bootstrap';
 import NetContext from '../../Context/NetContext'
 
-function MenuComponents(){
-  
+class MenuComponents extends Component{
+  render(){
     return (
       <NetContext.Consumer>
         {
@@ -43,6 +43,6 @@ function MenuComponents(){
     );
   }
   
-
+}
 
 export default MenuComponents;
