@@ -6,12 +6,12 @@ import NetContext from "./NetContext";
 
 
 function GlobalState(props){
-  login =  localStorage.getItem("login")
+ const login =  localStorage.getItem("login")
 
     const [loginState, setLogin] = useState({
      
     loginState:[
-    
+        
            loginUser = token=>{
 
         setLogin({
@@ -20,6 +20,8 @@ function GlobalState(props){
         localStorage.setItem("login",true);
         localStorage.setItem("token",token)
     
+           },
+           {
 
      logoutUser = ()=>{
         setLogin({
@@ -27,7 +29,7 @@ function GlobalState(props){
         })
         localStorage.removeItem("login");
         localStorage.removeItem("token")
-       
+    
     
     ],
     
