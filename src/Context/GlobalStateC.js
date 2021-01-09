@@ -1,36 +1,36 @@
 import React,{Component} from "react";
 import NetContext from "./NetContext";
 
-function GlobalState(props){
-   const  state={
+class GlobalState extends Component{
+    state={
         login:localStorage.getItem("login")
     }
-   const  loginUser = token=>{
-      function  setState({
-          login=true
-        }) 
+    loginUser = token=>{
+        this.setState({
+            login:true
+        })
         localStorage.setItem("login",true);
         localStorage.setItem("token",token)
     }
-    const logoutUser = ()=>{
-      function  setState({
-            login=false
+    logoutUser = ()=>{
+        this.setState({
+            login:false
         })
         localStorage.removeItem("login")
         localStorage.removeItem("token")
     }
-    
+    render(){
         return(
             <NetContext.Provider
                 value={{
-                    login:state.login,
-                    loginUser:loginUser,
-                    logoutUser:logoutUser
+                    login:this.state.login,
+                    loginUser:this.loginUser,
+                    logoutUser:this.logoutUser
                 }}
             >
-                {props.children}
+                {this.props.children}
             </NetContext.Provider>
         )
-            
+    }
 }
 export default GlobalState
