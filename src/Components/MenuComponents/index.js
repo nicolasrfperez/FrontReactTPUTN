@@ -3,7 +3,7 @@ import OptionComponents from "./OptionComponents"
 import { Navbar,  Nav} from 'react-bootstrap';
 import NetContext from '../../Context/NetContext'
 
-function MenuComponents(){
+function MenuComponents(props){
   
     return (
       <NetContext.Consumer>
