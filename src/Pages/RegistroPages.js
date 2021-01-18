@@ -32,8 +32,10 @@ function RegistroPages(){
                 
                 <FormGroup label="Nombre" type="text" placeholder="Ingrese su nombre" name="name" value={form.name} change={handleChange}/>
                 <FormGroup label="Email" type="email" placeholder="Ingrese su email" name="email" value={form.email} change={handleChange}/>
+                <div className="col-6 col-m-3 col-lg-4">
+
                 <FormGroup label="Contraseña" type="password" placeholder="Ingrese su contraseña" name="password" value={form.password} change={handleChange}/>
-                
+                </div>
                 <ButtonWithLoading text="Registrarse" loading={loading}/>
             </Form>
         </Container>
