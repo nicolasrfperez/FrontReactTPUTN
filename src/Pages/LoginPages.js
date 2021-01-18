@@ -45,8 +45,12 @@ function LoginPages(){
             <Form onSubmit={handleSubmit}>
                 
                 <FormGroup label="Email" type="email" placeholder="Ingrese su email" name="email" value={form.email} change={handleChange}/>
+               
+                <div className="col-6 col-m-3 col-lg-4">
+
+
                 <FormGroup label="Contraseña" type="password" placeholder="Ingrese su contraseña" name="password" value={form.password} change={handleChange}/>
-                
+               </div> 
                 <ButtonWithLoading text="Ingresar" loading={loading}/>
             </Form>
             <AlertCustom variant={alert.variant} text={alert.text} />
